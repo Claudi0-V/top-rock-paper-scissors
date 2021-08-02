@@ -1,7 +1,7 @@
 const computerPlay = () => {
 	let computer = 	Math.floor(Math.random() * 3 + 1);
 	switch (computer) {
-		case 1:
+		case 1: 
 			return 'Paper'
 		case 2: 
 			return 'Scissor'
@@ -10,6 +10,37 @@ const computerPlay = () => {
 	}
 }
 
+
+
 const singleRound = (playerSelection, computerSelection) => {
-	
+	let result;
+	if (playerSelection === computerSelection) {
+		return "It's a Draw"
+	} else {
+		if (playerSelection === 'Rock') {
+			if (computerSelection === 'Scissor') {
+				result = 'Win'
+			} else {
+				result = 'Loose'
+			}
+		} else if (playerSelection === 'Paper') {
+			if (computerSelection === 'Scissor') {
+				result = 'Win'
+			} else {
+				result = 'Loose'
+			}
+		}else if (playerSelection === 'Rock') {
+			if (computerSelection === 'Scissor') {
+				result = 'Win'
+			} else {
+				result = 'Loose'
+			}
+		}
+
+	return `You ${result}`		
+	}
 }
+
+player = 'Rock';
+computerSelection = computerPlay();
+
