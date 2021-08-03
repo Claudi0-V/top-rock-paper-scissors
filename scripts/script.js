@@ -2,14 +2,13 @@ const computerPlay = () => {
 	let computer = 	Math.floor(Math.random() * 3 + 1);
 	switch (computer) {
 		case 1: 
-			return 'Paper'
+			return 'paper'
 		case 2: 
-			return 'Scissor'
+			return 'scissor'
 		case 3:
-			return 'Rock'
+			return 'rock'
 	}
 }
-
 
 
 const singleRound = (playerSelection, computerSelection) => {
@@ -17,20 +16,20 @@ const singleRound = (playerSelection, computerSelection) => {
 	if (playerSelection === computerSelection()) {
 		return "It's a Draw"
 	} else {
-		if (playerSelection === 'Rock') {
-			if (computerSelection() === 'Scissor') {
+		if (playerSelection === 'rock') {
+			if (computerSelection() === 'scissor') {
 				result = 'Win'
 			} else {
 				result = 'Loose'
 			}
-		} else if (playerSelection === 'Paper') {
-			if (computerSelection() === 'Scissor') {
+		} else if (playerSelection === 'paper') {
+			if (computerSelection() === 'rock') {
 				result = 'Win'
 			} else {
 				result = 'Loose'
 			}
-		}else if (playerSelection === 'Rock') {
-			if (computerSelection() === 'Scissor') {
+		} else if (playerSelection === 'scissor') {
+			if (computerSelection() === 'paper') {
 				result = 'Win'
 			} else {
 				result = 'Loose'
@@ -41,14 +40,15 @@ const singleRound = (playerSelection, computerSelection) => {
 	}
 }
 
-player = 'Paper';
-computerSelection = computerPlay;
+const player = () => prompt("Choose your play (Rock, Paper, Scissor): ").toLowerCase();
+let computerSelection = computerPlay;
+
 
 const game = (func, arg1, arg2) => {	
 	let counter = [0,0,0];
 	let round = 1
 	for (let i = 0; i < 5; i++) {
-		let current = func(arg1, arg2);
+		let current = func(arg1(), arg2);
 		console.log(`round ${round++}: ${current}`);
 
 		if (current === "It's a Draw") {
