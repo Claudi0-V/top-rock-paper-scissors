@@ -1,0 +1,27 @@
+.rps {
+	width: 70%;
+	height: 70vh;
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+  	align-items: center;
+}
+
+.hand {
+	background-color: white;
+	flex-basis: calc(100%/3);
+	height: 19em;
+	margin: 2em;
+	border: 2px solid black;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.hand:hover {
+	background-color: gray;
+}
+.fas {
+	font-size: 10em;
+	color: #503335;
+}
