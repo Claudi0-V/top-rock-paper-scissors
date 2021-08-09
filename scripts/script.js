@@ -1,40 +1,39 @@
 const computerPlay = () => {
     let computer = Math.floor(Math.random() * 3 + 1);
-    return computer === 1 ? 'paper' : computer === 2 ? 'scissor' : 'rock'
+    return computer === 1 ? 'Paper' : computer === 2 ? 'Scissor' : 'Rock'
 }
 
 
 const singleRound = (playerSelection, computerSelection) => {
     let result;
-    if (playerSelection === computerSelection()) {
-        return "It's a Draw"
+    if (playerSelection === computerSelection) {
+        return `Both Played: ${playerSelection}.\nIt's a Draw`
     } else {
-        if (playerSelection === 'rock') {
-            if (computerSelection() === 'scissor') {
+        if (playerSelection === 'Rock') {
+            if (computerSelection === 'Scissor') {
                 result = 'Win'
             } else {
                 result = 'Loose'
             }
-        } else if (playerSelection === 'paper') {
-            if (computerSelection() === 'rock') {
+        } else if (playerSelection === 'Paper') {
+            if (computerSelection === 'Rock') {
                 result = 'Win'
             } else {
                 result = 'Loose'
             }
-        } else if (playerSelection === 'scissor') {
-            if (computerSelection() === 'paper') {
+        } else if (playerSelection === 'Scissor') {
+            if (computerSelection === 'Paper') {
                 result = 'Win'
             } else {
                 result = 'Loose'
             }
         }
 
-        return `You ${result}`
+        return `You Played: ${playerSelection}.\nComputer Played: ${computerSelection}.\nResult: You ${result}`
     }
 }
 
-const player = () => prompt("Choose your play (Rock, Paper, Scissor): ").toLowerCase();
-let computerSelection = computerPlay;
+let computerSelection = computerPlay();
 
 
 /*
@@ -56,4 +55,14 @@ const game = (func, arg1, arg2) => {
 }
 */
 
-singleRound(player, computerSelection)
+function roundCaller(e) {
+    player = e.currentTarget.dataset.hand;
+    console.log(singleRound(player, computerSelection))
+
+    
+}
+const playerChoice = document.querySelectorAll('.hand');
+playerChoice.forEach( choice => choice.addEventListener('click', roundCaller))
+
+
+//singleRound(player, computerSelection)
