@@ -1,3 +1,9 @@
+const pResult = document.querySelector('#result-text');
+const pScore = document.querySelector('#score');
+const playerChoice = document.querySelectorAll('.hand');
+const pEnd = document.querySelector('#endgame');
+const pEndResults = document.querySelector('#endgame-results');
+
 let counter = [0, 0, 0];
 let round = 0;
 
@@ -23,8 +29,7 @@ const singleRound = (playerSelection, computerSelection) => {
 }
 
 function globalScoresUpdate(currentRound, counter) {
-    round++;
-    pScore.textContent = `Round ${round}`
+    pScore.textContent = `Round ${++round}`;
     if (currentRound === 'Win') counter[0]++;
     if (currentRound === 'Loose') counter[1]++;
     if (currentRound === 'Draw') counter[2]++;
@@ -39,13 +44,26 @@ const resetter = () => {
     round = 0
 }
 
+const endGameUI = () => {
+    pEnd.textContent = "Endgame Results:"
+    pEndResults.textContent = `${counter[0]++} Wins,
+${counter[1]} Losts,
+${counter[2]} Draws.
+`;
+}
+
 const endGame = () => {
     if (!(round === 5)) return;
-    endGameResult = counter[0] > counter[1] ? 'Win' : 'Lost'
-    if (confirm(`You ${endGameResult}! 
-        Press Ok if want to start again`)) {
-    resetter()    
-    }    
+    endGameUI();
+    setTimeout(() => {
+        endGameResult = counter[0] > counter[1] ? 'Win' : 'Lost'
+        if (confirm(`You ${endGameResult}! 
+            Press Ok if want to start again`)) {
+            resetter();
+        }
+        pEnd.textContent = '';
+        pEndResults.textContent = '';
+    },0)    
 }
 
 function roundCaller(e) {
@@ -59,9 +77,4 @@ function roundCaller(e) {
     endGame();
 }
 
-
-const pResult = document.querySelector('#result-text');
-const pScore = document.querySelector('#score')
-const playerChoice = document.querySelectorAll('.hand');
 playerChoice.forEach( choice => choice.addEventListener('click', roundCaller))
-

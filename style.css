@@ -16,13 +16,14 @@ body {
 .hand {
 	background-color: rgba(0, 0, 0, 0);
 	flex-basis: calc(100%/3);
+	max-width: 142px;
 	max-height: 19em;
 	margin: 1em;
 	border: 1px solid black;
-	border-radius: 50%;
+	border-radius: 15px;
 	cursor: pointer;
 	transition: all .2s ease-in-out;
-
+	outline: none;
 }
 
 .hand:hover {
@@ -39,12 +40,12 @@ body {
 	margin: 0;
 }
 
-#score {
+.big-text {
 	font-size: 25px;
 	font-weight: 900;
 }
 
-#result-text {
+.small-text {
 	white-space: pre-wrap;
 	font-size: 20px;
 }
