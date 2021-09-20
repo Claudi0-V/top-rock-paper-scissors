@@ -1,5 +1,5 @@
 let counter = [0, 0, 0];
-let round = 1;
+let round = 0;
 
 const computerPlay = () => {
     let computer = Math.floor(Math.random() * 3 + 1);
@@ -23,7 +23,7 @@ const singleRound = (playerSelection, computerSelection) => {
 }
 
 function globalScoresUpdate(currentRound, counter) {
-    ++round;
+    round++;
     pScore.textContent = `Round ${round}`
     if (currentRound === 'Win') counter[0]++;
     if (currentRound === 'Loose') counter[1]++;
@@ -45,24 +45,22 @@ const endGame = () => {
     if (confirm(`You ${endGameResult}! 
         Press Ok if want to start again`)) {
     resetter()    
-    }
-
-    
+    }    
 }
-
 
 function roundCaller(e) {
     let player = e.currentTarget.dataset.hand;
     let computerRound = computerPlay();
-    let currentRound = singleRound(player, computerRound)
+    let currentRound = singleRound(player, computerRound);
+    globalScoresUpdate(currentRound, counter);
     let notDraw = `You Played: ${player}.\nComputer Played: ${computerRound}.\nResult: You ${currentRound}`
     let pLog = currentRound === 'Draw' ? `Both Played: ${player}.\nIt's a Draw` : notDraw;
     resultLogger(pLog);
-    globalScoresUpdate(currentRound, counter);
-    endGame()
-
+    endGame();
 }
-const pResult = document.querySelector('#result');
+
+
+const pResult = document.querySelector('#result-text');
 const pScore = document.querySelector('#score')
 const playerChoice = document.querySelectorAll('.hand');
 playerChoice.forEach( choice => choice.addEventListener('click', roundCaller))

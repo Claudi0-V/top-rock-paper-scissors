@@ -1,33 +1,62 @@
+body {
+	background: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%) no-repeat fixed center;
+	background-size: cover;
+}
+
 .rps {
 	max-width: 70%;
 	height: 100%;
-	margin: auto;
+	margin: 5% auto;
 	display: flex;
-	flex-direction: row;
 	justify-content: center;
+	flex-direction: column;
   	align-items: center;
 }
 
 .hand {
-	background-color: white;
+	background-color: rgba(0, 0, 0, 0);
 	flex-basis: calc(100%/3);
-	height: 19em;
-	margin: 2em;
-	border: 2px solid black;
+	max-height: 19em;
+	margin: 1em;
+	border: 1px solid black;
 	border-radius: 50%;
 	cursor: pointer;
-	 transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+
 }
 
 .hand:hover {
-	background-color: gray;
+	background-color: #9599E2;
 	transform: scale(1.1)
 }
 .fas {
-	font-size: 10em;
-	
+	font-size: 4rem;
+	padding: 15px;
 }
 
 .result {
+	text-align: center;
+	margin: 0;
+}
+
+#score {
+	font-size: 25px;
+	font-weight: 900;
+}
+
+#result-text {
 	white-space: pre-wrap;
+	font-size: 20px;
+}
+
+
+@media (min-width: 600px) {
+	.rps {
+		flex-direction: row;
+	}
+
+	.fas {
+		font-size: 7rem;
+	}
+
 }
