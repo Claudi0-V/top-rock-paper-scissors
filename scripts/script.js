@@ -20,9 +20,9 @@ const singleRound = (playerSelection, computerSelection) => {
         if (playerSelection === 'Rock') {
             result = computerSelection === 'Scissor' ? 'Win' : 'Loose';
         } else if (playerSelection === 'Paper') {
-            result = computerSelection === 'Rock' ?  'Win' : 'Loose';
+            result = computerSelection === 'Rock' ? 'Win' : 'Loose';
         } else if (playerSelection === 'Scissor') {
-            result = computerSelection === 'Paper' ?  'Win' : 'Loose';
+            result = computerSelection === 'Paper' ? 'Win' : 'Loose';
         }
     }
     return result
@@ -36,11 +36,11 @@ function globalScoresUpdate(currentRound, counter) {
 }
 
 const resultLogger = text => {
-   pResult.textContent = text;
+    pResult.textContent = text;
 }
 
 const resetter = () => {
-    counter = [0,0,0];
+    counter = [0, 0, 0];
     round = 0
 }
 
@@ -57,13 +57,13 @@ const endGame = () => {
     endGameUI();
     setTimeout(() => {
         endGameResult = counter[0] > counter[1] ? 'Win' : 'Lost'
-        if (confirm(`You ${endGameResult}! 
+        if (confirm(`You ${endGameResult}!
             Press Ok if want to start again`)) {
             resetter();
         }
         pEnd.textContent = '';
         pEndResults.textContent = '';
-    },0)    
+    }, 0)
 }
 
 function roundCaller(e) {
@@ -77,4 +77,5 @@ function roundCaller(e) {
     endGame();
 }
 
-playerChoice.forEach( choice => choice.addEventListener('click', roundCaller))
+
+playerChoice.forEach(choice => choice.addEventListener('click', roundCaller))
